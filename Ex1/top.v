@@ -32,6 +32,7 @@ module blinds(
     
     wire   out;
          
-      //Todo: add you logic here
+     assign out = func[{a,b}];
+ //Todo: add you logic here
 
 endmodule
