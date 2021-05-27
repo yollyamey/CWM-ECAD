@@ -18,7 +18,7 @@ module AC (
 
 // Ports
 input clk,
-input reg [4:0] temperature,
+input [4:0] temperature,
 output heating,
 output cooling);
 
@@ -33,18 +33,12 @@ always @(posedge clk)
 // User Logic
 
 begin
-if (temperature  <= 18)
-state <= 0;
-
-if (temperature > 20)
-state <= 1;
-
-if (temperature  >= 22)
-state <= 2;
-if (temperature < 20)
-state <= 1;
-
+case (state)
+0: state <= #1 temperature < 20? 0: 1;
+1: state <= #1 temperature <= 18? 0: temperature >= 22? 2: 1;
+2: state <= #1 temperature >20? 2: 1;
+default: state <= 1;
+endcase
 end
-
-endmodule 
+endmodule
 
