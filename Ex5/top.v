@@ -32,17 +32,17 @@ always @(posedge clk)
 
 // User Logic
 
-
-if (temperature  <== 18)
-state = 0;
+begin
+if (temperature  <= 18)
+state <= 0;
 
 if (temperature > 20)
-state = 1;
+state <= 1;
 
-if (temperature  >== 22)
-state = 2;
+if (temperature  >= 22)
+state <= 2;
 if (temperature < 20)
-state = 1;
+state <= 1;
 
 end
 
