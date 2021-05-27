@@ -63,18 +63,7 @@ $display("***TEST FAILED! rst=0, colour_1=%h, colour=%h", colour_1, colour);
 err = 1;
 end
 end
-//colour_1 = on_off ? counter_1 + 1: counter_1 - 1;
-//if (counter_1 != counter_out)
-//begin
-//$display("Test is Failed");
-//err = 1;
-//end
-	 //if ((sel&(out!=ab_prev[0]))| (!sel&(out!=ab_prev[1])))
-        
-	//if (colour_1 == 10)
-//on_off = ~on_off; 
-       
-     //end
+
 end
 
 // Instantiate counter module
