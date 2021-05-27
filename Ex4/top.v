@@ -19,10 +19,10 @@
 
 module LED (
 // Ports
-input clk;
-input rst;
-input button;
-output [2:0] colour;
+input clk,
+input rst,
+input button,
+output reg [2:0] colour);
 
 // Registers & Wires
 always @(posedge clk)
@@ -32,11 +32,17 @@ begin
 
 if (rst == 1)
 colour = 3'b0;
-else if (button == 0)
-colour = colour;
+
+else begin 
+if (button == 0)
+colour <= #1 ( (colour == 3'b000) | (colour == 3'b111)) ? 3'b001 : colour;
+else 
+colour <= #1 ( (colour < 3'b110)) ? (colour + 3'b001): (3'b001);
+
+end 
 
 end
 
-end module 
+endmodule 
 
 //

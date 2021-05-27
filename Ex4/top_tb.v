@@ -33,25 +33,36 @@ initial begin
        rst=1;
        button=0;
        err=0;
-       colour=1;
-colour_1 = 0;
+       colour_1 = 3'b111;
        #(CLK_PERIOD*10);
-if (colour != 0)
+if ( !(colour == 3'b0) || (colour == 3'b1))
 begin
 $display("**Test failed!!**");
 err = 1;
 end
 rst = 0;
+if ( colour != 3'b001)
+begin
+$display("***TEST FAILED! rst=1, colour=%h", colour);
+end
 
 #(CLK_PERIOD*10);
 if (colour != 0)
 begin
-$display("**Test failed!!**");
+$display("***TEST FAILED! rst=1, colour=%h", colour);
 err = 1;
 end
-change = 1;
-       //forever begin
-         //#(CLK_PERIOD);
+button = 1;
+       forever begin
+         #(CLK_PERIOD)
+if (button == 1)
+colour_1 = colour_1 < 3'b110 ? colour_1 + 3'b001: 3'b001;
+if (colour_1 != colour)
+begin
+$display("***TEST FAILED! rst=0, colour_1=%h, colour=%h", colour_1, colour);
+err = 1;
+end
+end
 //colour_1 = on_off ? counter_1 + 1: counter_1 - 1;
 //if (counter_1 != counter_out)
 //begin
