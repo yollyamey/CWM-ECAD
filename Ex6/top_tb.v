@@ -34,7 +34,7 @@ colour = 0;
 enable = 0;
 #100; // delay
 enable = 1;
-
+end
 initial begin
        colour=0;
        enable=0;
@@ -53,6 +53,7 @@ initial begin
        end
      end
 
+
  initial begin
         #800
         if (err==0)
@@ -61,6 +62,6 @@ initial begin
           $display("Undetected ERROR?");
         $finish;
       end
-     
-     converter rgb_converter(clk,colour,enable,rgb);
+
+     converter RGB(clk,colour,enable,rgb);
 endmodule 
