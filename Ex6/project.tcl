@@ -17,7 +17,10 @@ set_property top ${top} [current_fileset]
 puts "Creating Project"
 
 create_fileset -constrset -quiet constraints
-#add_files -fileset constraints -norecurse ${project_constraints}
+#add_files -fileset constraints -norecurse ${project_constraints} copy and paste from gui
+create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name yolblk
+set_property -dict [list CONFIG.Component_Name {yolblk}] [get_ips yolblk]
+
 #set_property is_enabled false [get_files ${project_constraints}]
 
 #Todo: add verilog modules here
