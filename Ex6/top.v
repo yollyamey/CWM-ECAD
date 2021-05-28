@@ -14,4 +14,16 @@
 //           rgb [23:0]
 //
 //////////////////////////////////////////////////////////////////////////////////
+`timescale 1ns / 100ps
 
+module RGB (
+
+// Ports
+input clk,
+input [2:0] colour,
+input enable,
+output[23,0] rgb);
+
+
+// Registers & Wires
+always @(posedge clk)
