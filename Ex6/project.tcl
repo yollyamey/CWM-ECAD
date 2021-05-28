@@ -1,4 +1,3 @@
-
 set design "Ex6"
 set top top
 set sim_top top_tb
@@ -17,13 +16,10 @@ set_property top ${top} [current_fileset]
 puts "Creating Project"
 
 create_fileset -constrset -quiet constraints
-#add_files -fileset constraints -norecurse ${project_constraints} copy and paste from gui
-create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name yolblk
-set_property -dict [list CONFIG.Component_Name {yolblk}] [get_ips yolblk]
 
-#set_property is_enabled false [get_files ${project_constraints}]
+create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name blk_mem_gen_0 -dir ${repo_dir}
+set_property -dict [list CONFIG.Write_Depth_A {8} CONFIG.Write_Width_A {24} CONFIG.Read_Width_A {24} CONFIG.Write_Width_B {24} CONFIG.Read_Width_B {24} CONFIG.Load_Init_File {true} CONFIG.Coe_File {../../mem.coe} CONFIG.Fill_Remaining_Memory_Locations {true}] [get_ips blk_mem_gen_0]
 
-#Todo: add verilog modules here
 read_verilog "top.v"
 read_verilog "top_tb.v"
 
