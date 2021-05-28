@@ -63,5 +63,5 @@ initial begin
         $finish;
       end
 
-     converter RGB(clk,colour,enable,rgb);
+     RGB converter (clk,colour,enable,rgb);
 endmodule 

@@ -38,4 +38,4 @@ blk_mem_gen_0 rgb_mem (
 .douta(rgb) // output wire [23 : 0] douta
 );
 
-//
+endmodule
